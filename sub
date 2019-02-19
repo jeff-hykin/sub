@@ -38,7 +38,6 @@ elsif ARGV.length == 3
         replacement = replacement.gsub(/\#{/,'\#{') # escape interpolation #{}
         replacement = eval '"' + replacement + '"' # evaluate the string
     # open the file
-        p filename
         the_file          = File.open(filename)
         file_content_copy = the_file.read
         the_file.close
