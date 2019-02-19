@@ -38,10 +38,13 @@ elsif ARGV.length == 3
         replacement = replacement.gsub(/\#{/,'\#{') # escape interpolation #{}
         replacement = eval '"' + replacement + '"' # evaluate the string
     # open the file
-        the_file          = File.open(filename,"w+")
+        p filename
+        the_file          = File.open(filename)
         file_content_copy = the_file.read
+        the_file.close
     # edit the file 
-        file_content.gsub!(find,replacement)
+        the_file          = File.open(filename,"w+")
+        file_content_copy.gsub!(find, replacement)
         the_file.write(file_content_copy)
         the_file.close
 end#if 
